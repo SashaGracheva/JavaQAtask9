@@ -1,54 +1,67 @@
 package ru.netology.radio;
 
 public class Radio {
-    public int currentStation;
+    private int currentStation;
+    private int currentVolume;
 
 
     public int getCurrentStation() {
+
         return currentStation;
+    }
+
+    public int getCurrentVolume() {
+
+        return currentVolume;
     }
 
     public void setCurrentStation(int newCurrentStation) {
         if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentStation > 9) {
-            return;
-        }
         currentStation = newCurrentStation;
+        if (newCurrentStation > 9) {
+            currentStation = 9;
+        }
+
     }
 
+    public void setCurrentVolume(int newCurrentVolume) {
+        if (newCurrentVolume < 0) {
+            return;
+        }
+        currentVolume = newCurrentVolume;
 
-    public void switchToNextStation(int nextCurrentStation) {
-        if (nextCurrentStation < 9)
-            currentStation = nextCurrentStation + 1;
-        if (nextCurrentStation == 9)
+        if (newCurrentVolume > 10) {
+            currentVolume = 10;
+        }
+    }
+
+    public void switchToNextStation() {
+        if (currentStation < 9)
+            currentStation = currentStation + 1;
+        if (currentStation == 9)
             currentStation = 0;
     }
 
-    public void switchToPrevStation(int prevCurrentStation) {
-        if (prevCurrentStation < 9)
-            currentStation = prevCurrentStation - 1;
-        if (prevCurrentStation == 0)
+    public void switchToPrevStation() {
+        if (currentStation >0)
+            currentStation = currentStation - 1;
+        if (currentStation == 0)
             currentStation = 9;
     }
 
-    public int currentVolume;
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void increaseVolume(int newVolume) {
-        if (newVolume < 10) {
-            currentVolume = newVolume + 1;
+    public void increaseVolume() {
+        if (currentVolume < 10) {
+            currentVolume = currentVolume + 1;
         }
 
     }
 
-    public void decreaseVolume(int oldVolume) {
-        if (oldVolume > 0) {
-            currentVolume = oldVolume - 1;
+    public void decreaseVolume() {
+        if (currentVolume > 0) {
+            currentVolume = currentVolume - 1;
         }
     }
 
