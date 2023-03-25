@@ -19,9 +19,11 @@ public class Radio {
         if (newCurrentStation < 0) {
             return;
         }
-        currentStation = newCurrentStation;
+        if (newCurrentStation <= 9) {
+            currentStation = newCurrentStation;
+        }
         if (newCurrentStation > 9) {
-            currentStation = 9;
+            return;
         }
 
     }
@@ -30,25 +32,25 @@ public class Radio {
         if (newCurrentVolume < 0) {
             return;
         }
-        currentVolume = newCurrentVolume;
-
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume >= 10) {
             currentVolume = 10;
         }
     }
 
     public void switchToNextStation() {
-        if (currentStation < 9)
-            currentStation = currentStation + 1;
-        if (currentStation == 9)
+        if (currentStation < 9) {
+            currentStation++;
+        } else if (currentStation == 9) {
             currentStation = 0;
+        }
     }
 
     public void switchToPrevStation() {
-        if (currentStation >0)
+        if (currentStation > 0) {
             currentStation = currentStation - 1;
-        if (currentStation == 0)
+        } else if (currentStation == 0) {
             currentStation = 9;
+        }
     }
 
 
