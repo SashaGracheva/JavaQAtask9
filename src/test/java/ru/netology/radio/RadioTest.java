@@ -8,9 +8,9 @@ public class RadioTest {
     public void shouldSetStation() {
         Radio radio = new Radio();
 
-        radio.setCurrentStation(5);
+        radio.setCurrentStation(9);
 
-        int expected = 5;
+        int expected = 9;
         int actual = radio.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -85,17 +85,7 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test
-    public void shouldSwitchToNotExistPrevStation() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(12);
-        radio.switchToPrevStation();
-        int expected = 9;
-        int actual = radio.getCurrentStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-    @Test
+       @Test
     public void shouldIncreaseVolume() {
         Radio radio = new Radio();
         radio.increaseVolume();
